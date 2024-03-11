@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33927.289
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CIS 4290 Web API", "CIS 4290 Web API\CIS 4290 Web API.vbproj", "{9C780C8A-D3F3-49EC-861C-CCB7D19443EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C780C8A-D3F3-49EC-861C-CCB7D19443EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C780C8A-D3F3-49EC-861C-CCB7D19443EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C780C8A-D3F3-49EC-861C-CCB7D19443EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C780C8A-D3F3-49EC-861C-CCB7D19443EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AEE9D3CD-ADDA-4688-B261-53EA1AC14DFF}
+	EndGlobalSection
+EndGlobal

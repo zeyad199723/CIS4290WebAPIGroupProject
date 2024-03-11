@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Customer_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CreditCardInfo">
+          <Key>
+            <PropertyRef Name="CardId" />
+          </Key>
+          <Property Name="CardId" Type="int" Nullable="false" />
+          <Property Name="CardNumber" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="CardHolder" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ExpirationDate" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="SecurityCode" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="CreditFund" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="OnHold" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="LastName" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="StreetAddress" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="City" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="State" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="LoginID" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="TransactionKey" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Customer_DBModelStoreContainer">
+          <EntitySet Name="CreditCardInfo" EntityType="Self.CreditCardInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Customer_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Customer_DBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="Customer_DBModel.User" />
+          <EntitySet Name="Customers" EntityType="Customer_DBModel.Customer" />
+          <EntitySet Name="CreditCardInfoes" EntityType="Customer_DBModel.CreditCardInfo" />
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="LoginID" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="TransactionKey" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StreetAddress" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CreditCardInfo">
+          <Key>
+            <PropertyRef Name="CardId" />
+          </Key>
+          <Property Name="CardId" Type="Int32" Nullable="false" />
+          <Property Name="CardNumber" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="CardHolder" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ExpirationDate" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="SecurityCode" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="CreditFund" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="OnHold" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Customer_DBModelStoreContainer" CdmEntityContainer="Customer_DBContext">
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Customer_DBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="TransactionKey" ColumnName="TransactionKey" />
+                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="Customer_DBModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreditCardInfoes">
+            <EntityTypeMapping TypeName="Customer_DBModel.CreditCardInfo">
+              <MappingFragment StoreEntitySet="CreditCardInfo">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="OnHold" ColumnName="OnHold" />
+                <ScalarProperty Name="CreditFund" ColumnName="CreditFund" />
+                <ScalarProperty Name="SecurityCode" ColumnName="SecurityCode" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="CardHolder" ColumnName="CardHolder" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="CardId" ColumnName="CardId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
